@@ -1,5 +1,5 @@
 # android
-## Init
+## 可选题目
 
 1. gobang:	五子棋游戏  
 2. camera: Android camera开发  
@@ -9,11 +9,19 @@
 6. tensorflow: android+tensorflow开发  
 7. pytorch: android+pytorch开发  
 
+大家自由组队，每题一对，每题目5人左右。
 
-大家自由组队，每个题目5人左右。
+## 评分参考细则
+- 帮助文档撰写情况  
+- 示例代码  
+- GitHub项目中活跃度  
+- 课程ppt
+- 课堂报告表现
 
-同学们可以在这里提意见，帮忙一起完善项目
+## 暂定打分方式
+> 组内互评+组间互评 (匿名打分)
 
+## others
 项目完善中。。。
 
 ## Todo List
