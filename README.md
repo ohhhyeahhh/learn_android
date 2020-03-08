@@ -9,8 +9,6 @@
 6. tensorflow: android+tensorflow开发  
 7. pytorch: android+pytorch开发  
 
-大家自由组队，每题一对，每题目5人左右。
-
 ## 评分参考细则
 - 帮助文档撰写情况  
 - 示例代码  
