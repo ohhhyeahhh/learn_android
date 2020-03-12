@@ -44,4 +44,4 @@ git clone https://github.com/ohhhyeahhh/learn_android.git
 
 3.12 git test + 编写项目计划和目录
 
-3.13 具体计划本项目内容
+3.13 具体计划项目内容
