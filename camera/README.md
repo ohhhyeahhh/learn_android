@@ -20,10 +20,10 @@
 
 ## 内容介绍
 
-- 核心概念：[docs - core](/docs/core.md)
-- 基础开发：[docs - basic](/docs/basic.md)
-- 进阶开发：[docs - advanced](/docs/advanced.md)
-- 示例代码：[code](/code/)
+- 核心概念：[docs - core](/camera/docs/core.md)
+- 基础开发：[docs - basic](/camera/docs/basic.md)
+- 进阶开发：[docs - advanced](/camera/docs/advanced.md)
+- 示例代码：[code](/camera/code/)
 
 ## 食用方法
 
