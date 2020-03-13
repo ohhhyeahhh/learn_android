@@ -11,9 +11,9 @@
 * 陆凯丰
 # 项目相关说明
 1. demo 示例代码相关  
-  -demo文件  
-  -demo/core 示例代码说明  
+    -demo文件  
+    -demo/core 示例代码说明  
 2. t&p 团队文档以及项目详细介绍  
-  -t&p/team 团队介绍及分工  
-  -t&p/about 项目相关信息介绍  
+    -t&p/team 团队介绍及分工  
+    -t&p/about 项目相关信息介绍  
 
