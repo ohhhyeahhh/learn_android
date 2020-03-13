@@ -15,7 +15,7 @@ NDK是一个Android官方提供的一个开发套件与Android　SDK相对应，
     - demo/code 示例代码  
     - demo/about 示例代码说明  
 2. t&p-团队文档以及项目详细介绍  
-    - t&p/team 团队介绍及分工  
+    - t&p/team 团队分工及课题计划  
     - t&p/about ndk 项目相关信息介绍  
 ## 参考资料
 * <https://www.jianshu.com/p/16f6a3e3fc45>
