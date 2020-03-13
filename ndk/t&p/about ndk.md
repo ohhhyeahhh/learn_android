@@ -1,5 +1,5 @@
 # Android-NDK t&p/about ndk
-## 概念
+## 一、概念
 ### NDK
 * __定义:__  
 Android Native Development Kit，简称NDK。  
@@ -16,7 +16,7 @@ Java Native Interface（JNI）标准是java平台的一部分，JNI是Java语言
 NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的接口，两者与android没有半毛钱关系，只因为安卓是java程序语言开发，然后通过JNI又能与C/C++沟通，所以我们可以使用NDK+JNI来实现“Java+C”的开发方式。 
 ### CMake
 允许开发者编写一种平台无关的 CMakeList.txt 文件来定制整个编译流程，然后再根据目标用户的平台进一步生成所需的本地化 Makefile 和工程文件，如 Unix 的 Makefile 或 Windows 的 Visual Studio 工程。从而做到“Write once, run everywhere”。  
-### 安装与环境配置
+## 二、安装与环境配置
 ---等待后续完善---
 
 
