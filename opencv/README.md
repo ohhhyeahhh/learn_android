@@ -24,32 +24,6 @@ OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库�
 
 ## 知识储备
 
-### Surface
-
-Surfaces是用来处理屏幕显示内容合成器所管理的原始缓存区的工具。它通常由图像缓冲区的消费者来创建（如：SurfaceTexture，MediaRecorder），然后被移交给生产者（如：MediaPlayer）或者是显示到其上（如：CameraDevice）。
-
-### SurfaceView
-
-SurfaceView提供了嵌入视图层级中的专用surface。你可以控制surface的格式或大小。SurfaceView负责把surface显示在屏幕的正确位置。
-
-### SurfaceHolder
-
-一个抽象接口，给持有surface的对象使用。它可以控制surface的大小和格式，编辑surface中的像素，以及监听surface的变化，这个接口通常通过SurfaceView类获得。
-
-### Camera
-Camera负责采集数据和各种操作,主要内部类如下：
-
-**1. CameraInfo**
-CameraInfo类用来描述相机信息，通过Camera类中`getCameraInfo(int cameraId, CameraInfo cameraInfo)`方法获得，主要包括以下两个成员变量：facing 代表相机的方向,orientation是相机采集图片的角度。
-
-**2. Parameters**
-Parameters是相机服务设置，不同的相机可能是不相同的。比如相机所支持的图片大小，对焦模式等等。
-
-**3. PreviewCallback**
-PreviewCallback是一个抽象接口`void onPreviewFrame(byte[] data, Camera camera)`
-
-通过onPreviewFrame方法来获取到相机预览的数据，第一个参数data，就是相机预览到的原始数据。
-
 ### Opencv
 **1. cvtColor**
 cvtColor函数是OpenCV里用于图像颜色空间转换，可以实现RGB颜色、HSV颜色、HSI颜色、lab颜色、YUV颜色等转换，也可以彩色和灰度图互转。
@@ -71,7 +45,7 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 该函数用于绘制矩形，可以利用对角线两点来绘制矩形或者传入矩形参数来绘制矩形。
 
 ## 参考资料
-- [人脸识别功能教程——实现支付宝人脸识别功能](https://www.jianshu.com/p/fe8dbb9f72ef?utm_source=desktop&utm_medium=timeline "人脸识别功能教程——实现支付宝人脸识别功能")
+- [Android 接入 OpenCV库的三种方式](https://www.cnblogs.com/xiaoxiaoqingyi/p/6676096.html)
 - [android 使用 surfaceView 获取 camera 预览界面图像数据](https://blog.csdn.net/DucklikeJAVA/article/details/81288624 "android 使用 surfaceView 获取 camera 预览界面图像数据")
 - [Android: Camera相机开发详解](https://www.jianshu.com/p/f8d0d1467584 "Android: Camera相机开发详解")
 - [android使用OpenCV之图像滤波处理](https://www.jianshu.com/p/e9562f8af1cb "android使用OpenCV之图像滤波处理")
@@ -102,3 +76,5 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 3.13  更新opencv介绍文档，修改readme文档
 
 3.14  修改readme文档，添加camera相关资料
+
+3.15 OpenCVDemo 实现后置摄像头框选功能
