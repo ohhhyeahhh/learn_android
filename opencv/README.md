@@ -21,6 +21,26 @@ OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库�
 
 ## 编译环境（待描述）
 
+## 基于 Android 的 OpenCV 开发环境搭建
+
+### OpenCV SDK 准备
+采用直接加载openCV官方提供的Android SDK来进行导入：
+
+先到官网http://opencv.org/releases.html ，下载Android 包，如：opencv-3.2.0-android-sdk.zip
+1. 进入后选择 Android SDK 点击下载即可
+1. 下载成功后解压得到我们要的OpenCV 资源
+
+### 将 OpenCV 导入到项目中去
+1. 新建 Android 项目
+2. 导入 OpenCV SDK 
+	- 导入刚刚下载解压到 SDK 包：选择：File > New > New Module
+    - 选择Import Eclipse ADT Project
+	- 选择刚刚下载解压得到 SDK 文件，点击open 路径为\OpenCV-android-sdk\sdk\java
+	- 设置 Module 名称，Finish
+3. 直接在 app 目录下build.gradle 文件里dependencies 大括号下添加 compile project(':openCVLibrary') 版本不同可能要将compile换成implementation
+4. 打开刚导入的模块下 build.gradle 文件，把 compileSdkVersion 和 minSdkVersion 和 targetSdkVersion修改成build.gradle(module:app)的SDK版本
+5. 接着在 app/src/main 目录下 创建一个jniLibs 目录，然后把sdk/native/libs 下所有文件拷贝到jniLibs下，编译，运行。
+`
 
 ## 知识储备
 
