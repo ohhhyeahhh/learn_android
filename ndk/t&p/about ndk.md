@@ -21,6 +21,7 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 * __安装NDK：__  
 1. 在Android studio下新建一个空项目。  
 2. 打开File->Project Structure。点击Download下载最新的ndk，ndk文件默认会下载保存在sdk目录下。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/download1.png)
 ## 三、问题及解决办法
 ---等待后续完善---
 
