@@ -12,11 +12,11 @@ NDK是一个Android官方提供的一个开发套件与Android　SDK相对应，
 * 陆凯丰
 ## 项目相关说明
 1. demo-示例代码相关  
-    - demo/code 示例代码  
-    - demo/about 示例代码说明  
+    - [demo/code](https://github.com/ohhhyeahhh/learn_android/tree/master/ndk/demo/code) 示例代码  
+    - [demo/about](https://github.com/ohhhyeahhh/learn_android/blob/master/ndk/demo/about.md) 示例代码说明  
 2. t&p-团队文档以及项目详细介绍  
-    - t&p/team 团队介绍及分工  
-    - t&p/about ndk 项目相关信息介绍  
+    - [t&p/team](https://github.com/ohhhyeahhh/learn_android/blob/master/ndk/t%26p/team.md) 团队介绍及分工  
+    - [t&p/about ndk](https://github.com/ohhhyeahhh/learn_android/blob/master/ndk/t%26p/about%20ndk.md) 项目相关信息介绍  
 ## 参考资料
 * <https://www.jianshu.com/p/16f6a3e3fc45>
 * <https://blog.csdn.net/xiaoyu_93/article/details/52870395>
@@ -24,5 +24,5 @@ NDK是一个Android官方提供的一个开发套件与Android　SDK相对应，
 ## 项目记录
 3.6 组队选题  
 3.13 完善项目资料及课题计划  
-
+3.20 完善环境安装相关信息
 
