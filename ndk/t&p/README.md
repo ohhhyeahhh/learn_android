@@ -8,5 +8,5 @@ NDK是一个Android官方提供的一个开发套件与Android　SDK相对应，
 * 陈理杰
 * 陆凯丰
 ## 内容说明
-* NDK相关概念、环境搭建及相关问题 [about ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/about%20ndk.md)  
-* 团队分工及课题计划 [team](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/team.md)
+* NDK相关概念、环境搭建及相关问题 [about ndk](https://github.com/ohhhyeahhh/learn_android/blob/master/ndk/t%26p/about%20ndk.md)  
+* 团队分工及课题计划 [team](https://github.com/ohhhyeahhh/learn_android/blob/master/ndk/t%26p/team.md)
