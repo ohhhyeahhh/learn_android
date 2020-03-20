@@ -27,10 +27,12 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 ![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl2.png)  
 4. 可以在local.properties文件中查看sdk与ndk的路径情况。  
 ![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl3.png)  
+  
 * __配置插件__  
 我们借助强大的Android Studio的插件功能，在External Tools下配置三个非常有用的插件。  
 进入File->Settings–>Tools–>ExternalTools，点击+号增加。  
 ![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/tool1.png)  
+  
 1. javah -jni命令  
     - Name：javah -jni  
     > 该命令是用来根据java文件生成.h头文件的，会自动根据java文件中的类名（包含包名）与方法名生成对应的C/C++里面的方法名。  
@@ -43,6 +45,31 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
     > 这里指调用module目录下的src\main\java目录。  
     - 使用方式：选中java文件—>右键—>External Tools—>javah-jni，就可以生成jni文件夹以及文件夹下的 包名.类名的.h头文件 （名字过长，我们可以自己重命名）。  
 ![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/javah1.png)  
+    - 添加完成后应如下图所示：  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/javah2.png)  
+  
+2. Ndk-bulid命令  
+    - Name：ndk -bulid  
+    > 该命令是用于根据C/C++文件生成so文件的。  
+    - Description：根据C/C++文件生成so文件  
+    - Program: 这里配置的是ndk下的ndk-build.cmd的路径，根据自己安装的实际情况填写。  
+    - Working directory:$ProjectFileDir$$ModuleFileDir$\src\main\  
+    - 使用方式：选中C/C++文件—>右键—>ExternalTools—>ndk-build，将在main文件夹下生成libs文件夹以及多个so文件，我们可以移动至jniLibs目录下去。 
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/ndk1.png)  
+  
+3. Ndk-bulid clean命令  
+    - Name：ndk-bulid clean  
+    > 该命令用来清理生成的二进制文件和目标文件。  
+    - Description：清理生成文件  
+    - Program: 这里和ndk -bulid命令一样配置的是ndk下的ndk-build.cmd的路径，根据自己安装的实际情况填写。
+    - Arguments:clean  
+    - Working directory:$ProjectFileDir$\app\src\main  
+    > 这里指调用project目录下的app\src\main目录。  
+  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/ndk2.png)  
+  
+全部配置完成后点击OK完成插件配置。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/tool2.png)  
     
 ## 三、问题及解决办法
 ---等待后续完善---
