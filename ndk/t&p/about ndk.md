@@ -22,11 +22,28 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 1. 在Android studio下新建一个空项目。  
 2. 打开File->Project Structure。点击Download下载最新的ndk，ndk文件默认会下载保存在sdk目录下。  
 （如果看不到下面的图片请参照 [教程](https://blog.csdn.net/qq_38232598/article/details/91346392) )  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/download1.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl1.png)  
 3. 将sdk目录下的ndk路径填入Android NDK location后点击OK完成路径配置。
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/download2.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl2.png)  
 4. 可以在local.properties文件中查看sdk与ndk的路径情况。  
-
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl3.png)  
+* __配置插件__  
+我们借助强大的Android Studio的插件功能，在External Tools下配置三个非常有用的插件。  
+进入File->Settings–>Tools–>ExternalTools，点击+号增加。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/tool1.png)  
+1. javah -jni命令  
+    - Name：javah -jni  
+    > 该命令是用来根据java文件生成.h头文件的，会自动根据java文件中的类名（包含包名）与方法名生成对应的C/C++里面的方法名。  
+    - Description：根据java文件生成.h头文件  
+    - Program: $JDKPath$\bin\javah.exe  
+    > 这里配置的是JDK目录下的javah.exe的路径。也可以直接在安装Java的JDK路径下的bin文件夹中找到javah.exe文件。  
+    - Arguments: -classpath . -jni -d $ModuleFileDir$/src/main/jni $FileClass$  
+    > 这里$ModuleFileDir$/src/main/jni表示生成的文件保存在这个module目录的src/main/jni目录下，$FileClass$指的是要执行操作的类名（即我们操作的文件）。  
+    - Working directory:$ModuleFileDir$\src\main\java module  
+    > 这里指调用module目录下的src\main\java目录。  
+    - 使用方式：选中java文件—>右键—>External Tools—>javah-jni，就可以生成jni文件夹以及文件夹下的 包名.类名的.h头文件 （名字过长，我们可以自己重命名）。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/javah1.png)  
+    
 ## 三、问题及解决办法
 ---等待后续完善---
 
