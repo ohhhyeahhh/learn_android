@@ -21,7 +21,6 @@ NDK是一个Android官方提供的一个开发套件与Android　SDK相对应，
 * <https://www.jianshu.com/p/16f6a3e3fc45>
 * <https://blog.csdn.net/xiaoyu_93/article/details/52870395>
 * <https://blog.csdn.net/chuhongcai/article/details/52558049>
-* <https://blog.csdn.net/qq_38232598/article/details/91346392>
 ## 项目记录
 3.6 组队选题  
 3.13 完善项目资料及课题计划  
