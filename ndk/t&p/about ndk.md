@@ -23,19 +23,34 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 ***
 
 ## 二、安装与环境配置
-### 1、使用mk方式安装
-* __安装NDK：__  
-1. 在Android studio下新建一个空项目。  
-2. 打开File->Project Structure。点击Download下载最新的ndk，ndk文件默认会下载保存在sdk目录下。  
+### 1、新建文件
+* __新建工程文件__
+1. 打开Android Studio,点击右上角SDK Manager。  
 （如果看不到下面的图片请参照 [教程](https://blog.csdn.net/qq_38232598/article/details/91346392) )  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl1.png)  
-3. 将sdk目录下的ndk路径填入Android NDK location后点击OK完成路径配置。
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl2.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/new1.png)  
+
+2. 点击SDK Tools保证下图三个工具全部勾选，第一次勾选会进行下载，在完成后文件的默认位置是C:\Users\<u>XXXXX</u>\AppData\Local\Android\Sdk(带下划线部分不同)，后续NDK的位置需要用到。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/new2.png)  
+
+3. 点击file->new->new project,弹出窗口选择新建Native c++工程文件,然后一直点NEXT完成新建。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/new3.png)  
+
+* __配置NDK：__  
+1. 打开右上角的Project Structure,打开SDK Location。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl1.1.png)  
+
+2. 这里的NDK Location是空的，复制上一行SDK的位置再预览可以在NDK下找到它安装的版本（本教程版本21.0.6113669）。  
+
+3. 将sdk目录下的ndk路径填入Android NDK location后点击OK完成路径配置。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl1.2.png)  
+
 4. 可以在local.properties文件中查看sdk与ndk的路径情况。  
 ![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/dl3.png)  
 
+
 ***
 
+### 2、使用mk方式安装
 * __配置插件__  
   
 我们借助强大的Android Studio的插件功能，在External Tools下配置三个非常有用的插件。  
@@ -104,7 +119,7 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 
 ***
 
-### 2、使用cmake方式安装
+### 3、使用cmake方式安装
 
 ## 三、问题及解决办法
 ---等待后续完善---
