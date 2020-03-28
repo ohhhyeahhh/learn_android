@@ -13,13 +13,15 @@ OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库�
 1. 框选画面中出现的人脸。
 
 ## 项目结构
---code：示例代码
+--code：示例代码及技术文档
 
 --资料整理：存放整理后资料
 
---？：技术文档
 
-## 编译环境（待描述）
+## 运行环境
+Android Studio 3.6.1
+
+OpenCV for Android SDK 3.4.1
 
 ## 基于 Android 的 OpenCV 开发环境搭建
 
@@ -66,7 +68,7 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 
 ## 参考资料
 - [Android 接入 OpenCV库的三种方式](https://www.cnblogs.com/xiaoxiaoqingyi/p/6676096.html)
-- [android 使用 surfaceView 获取 camera 预览界面图像数据](https://blog.csdn.net/DucklikeJAVA/article/details/81288624 "android 使用 surfaceView 获取 camera 预览界面图像数据")
+- [OpenCV4Android学习之图像特征匹配算法](https://blog.csdn.net/gulingfengze/article/details/53571605 "OpenCV4Android学习之图像特征匹配算法")
 - [Android: Camera相机开发详解](https://www.jianshu.com/p/f8d0d1467584 "Android: Camera相机开发详解")
 - [android使用OpenCV之图像滤波处理](https://www.jianshu.com/p/e9562f8af1cb "android使用OpenCV之图像滤波处理")
 - [opencv4android 常用函数API](https://blog.csdn.net/hbl_for_android/article/details/51941106 "opencv4android 常用函数API")
@@ -75,6 +77,11 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 1. Opencv功能介绍
 1. 摄像头获取图片信息
 1. 识别人脸并进行框选（Camera预览surfaceview 并转为bitmap格式）
+
+## 源码下载
+地址：https://pan.baidu.com/s/12EUmC2lJ0-JLGv6_TQRcVw 
+
+提取码：w721 
 
 
 ## 项目成员
@@ -97,4 +104,8 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 
 3.14  修改readme文档，添加camera相关资料
 
-3.15 OpenCVDemo 实现后置摄像头框选功能
+3.15  OpenCVDemo 实现后置摄像头框选功能
+
+3.23 添加打包项目
+
+3.26 添加技术文档
