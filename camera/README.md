@@ -27,16 +27,13 @@
 
 ## 食用方法
 
-1. clone至你的本地
-
-```git
-git clone https://github.com/ohhhyeahhh/learn_android.git
-```
+[code](/camera/code/)
 
 ## 参考资料
 
 - <https://www.jianshu.com/p/9a2e66916fcb> 
 - <https://www.android-doc.com/guide/topics/media/camera.html> 
+- …………
 
 ## 项目记录
 
@@ -45,3 +42,10 @@ git clone https://github.com/ohhhyeahhh/learn_android.git
 3.12 git test + 编写项目计划和目录
 
 3.13 具体计划项目内容
+
+3.29 - 4.4 各自分工实现具体功能
+
+4.5 代码整合与调试
+
+4.2 - 4.6 整理项目文档 + 制作演示PPT和视频
+

@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.demo.demos.fragments.GLPreviewFragment">
+
+
+    <android.opengl.GLSurfaceView
+        android:id="@+id/glSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.5"
+        android:background="#000000"
+        android:orientation="horizontal">
+    </RelativeLayout>
+    <ImageButton
+        android:id="@+id/btnCamera"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/button_circle_shape2"
+        android:src="@drawable/flip_camera_32px"
+        android:text="切换相机" />
+
+    <ImageButton
+        android:id="@+id/btnColorFilter"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/button_circle_shape2"
+        android:src="@drawable/lvjing"
+        android:text="切换滤镜" />
+    <Button
+        android:id="@+id/btnPhoto"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_circle_shape"/>
+
+</RelativeLayout>

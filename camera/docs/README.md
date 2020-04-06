@@ -16,3 +16,4 @@
 - 基础开发：[docs - basic](basic.md)
 - 进阶开发：[docs - advanced](advanced.md)
 
+同时我们还提供了比较完整的word版文档： [camera2知识点](camera2知识点 .docx)。
