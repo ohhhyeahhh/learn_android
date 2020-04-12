@@ -51,6 +51,11 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 ***
 
 ### 2、使用mk方式安装
+
+* 如果使用mk方式安装，需要先将app中的cpp文件夹删除后继续进行搭建。  
+
+***
+
 * __配置插件__  
   
 我们借助强大的Android Studio的插件功能，在External Tools下配置三个非常有用的插件。  
@@ -119,8 +124,63 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 
 ***
 
+* __环境配置测试__  
+1. 在java文件夹下的文件夹内新建一个java类  
+    - 在类中添加如下代码段：  
+    ```
+    static {
+    System.loadLibrary("MyLibrary");
+    }
+    public native String getString();
+    ```
+    - 注意：这里的MyLibrary后续还要用到。   
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+2. 右击新建的类找到刚刚新建的插件工具external tools->javah -jni，完成后生成一个有.h类的jni文件夹  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+3. 在jni下创建Android.mk和Application.mk以及hello.cpp三个文件  
+    - .mk文件可以通过直接新建一个file，再输入文件名+后缀.mk创建，之后会提示安装相关文件。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+4. 在hello.cpp文件下输入如下代码段：  
+
+    ```
+    #include "com_example_myapplication_jnitest.h"
+    #include<jni.h>
+    JNIEXPORT jstring JNICALL Java_com_example_myapplication_jnitest_getString
+            (JNIEnv *env, jobject obj){
+        return (*env).NewStringUTF("This is mylibrary !!!");
+    }
+    ```  
+
+    - 注意：第1行代码的com_example_myapplication_jnitest.h和第三行代码的Java_com_example_myapplication_jnitest_getString根据每个人自己的命名进行相应修改。  
+
+5. 在Android.mk文件中输入如下代码段：  
+    ```
+    LOCAL_PATH := $(call my-dir)
+    include $(CLEAR_VARS)
+    LOCAL_MODULE := MyLibrary
+    LOCAL_SRC_FILES =: hello.cpp
+    include $(BUILD_SHARED_LIBRARY)
+    ```
+    
+6. 在Applicaton.mk文件中输入如下代码段：  
+    ```
+    APP_MODULES := MyLibrary
+    APP_ABI := all
+    ```
+    
+
+    
+
+
 ### 3、使用cmake方式安装
 
 ## 三、问题及解决办法
 ---等待后续完善---
 
+## 参考资料
+* <https://www.jianshu.com/p/16f6a3e3fc45>
+* <https://blog.csdn.net/xiaoyu_93/article/details/52870395>
+* <https://blog.csdn.net/chuhongcai/article/details/52558049>
