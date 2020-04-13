@@ -1,5 +1,5 @@
 # Android-NDK t&p/about ndk
-## 一、概念
+## 一、概念介绍
 ### 1、NDK
 * __定义:__  
 Android Native Development Kit，简称NDK。  
@@ -19,6 +19,19 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 
 ### 4、CMake
 允许开发者编写一种平台无关的 CMakeList.txt 文件来定制整个编译流程，然后再根据目标用户的平台进一步生成所需的本地化 Makefile 和工程文件，如 Unix 的 Makefile 或 Windows 的 Visual Studio 工程。从而做到“Write once, run everywhere”。  
+
+### 5、ABI
+Application Binary Interface，简称ABI。  
+Application Binary Interface（ABI）是一种应用程序二进制接口，不同的CPU支持不同的指令集，而CPU与指令集的每种组合都有其自己的应用二进制接口（或ABI），ABI 可以非常精确地定义应用的机器代码在运行时应该如何与系统交互。NDK 根据这些定义编译 .so 文件。  
+不同的 ABI 对应不同的架构：NDK 为 32 位 ARM、AArch64、x86 及 x86-64 提供 ABI 支持。   
+
+### 6、SO
+Shared Object，简称SO。  
+SO（shared object，共享库）是机器可以直接运行的二进制代码，是Android上的动态链接库，类似于Windows上的dll。每一个Android应用所支持的ABI是由其APK提供的.so文件决定的，这些so文件被打包在apk文件的lib/目录下，其中ABI可以是上面表格中的一个或者多个。  
+
+### 7、LLDB
+Low Level Debugger，简称LLDB。  
+LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代码的调试器。与LLVM编译器一起使用，提供了丰富的流程控制和数据监测，有效的帮助我们调试程序。  
 
 ***
 
@@ -217,10 +230,54 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
 
 ### 3、使用cmake方式安装
 
+* ndk开发除了通过ndk_build，采用前面所述的Android.mk+Application.mk+src方式，还可以通过cmake，采用CmakeLists.txt+src的方式安装相关文件。  
+  在开始使用cmake安装之前，要确保已经按照之前的教程下载了Cmake构建工具、LLDB调试工具和NDK开发工具集，并创建了支持C/C++的新项目。  
+  
+* 创建完成后同样需要按照之前的教程配置NDK。全部配置完毕后，直接点击运行，可以发现Android Studio已经帮我们自动生成了一个可以运行的cpp文件（如下图所示）。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+***
+
+* __已有项目结构与普通项目的一些区别__
+1. app里的build.gradle配置比对代码可以发现里面面添加了两处externalNativeBuild配置项：  
+    - defaultConfig里面的配置项：主要配置了Cmake的命令参数。  
+    - defaultConfig外面的配置项：主要定义了CMake的构建脚本CMakeLists.txt的路径。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+    
+2. CMake的构建脚本CMakeLists.txt：  
+    - CMakeLists.txt是CMake的构建脚本，作用相当于ndk-build中的Android.mk。  
+    - 更多详细的脚本配置可以参考这个中文版的[CMAKE手册](https://www.zybuluo.com/khan-lau/note/254724)
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+3. 原生代码native-lib.cpp:  
+    - Android提供了一个简单的JNI交互Demo，返回一个字符串给Java层，方法名是通过 Java_包名_类名_方法名 的方式命名的，并通过MainActivity调用。  
+    - 加载native-lib：  
+    ```
+    static {
+        System.loadLibrary("native-lib");
+    }
+    ```
+    - 将native-lib中获取的字符串显示在TextView上：  
+    ```
+    TextView tv = findViewById(R.id.sample_text);
+    tv.setText(stringFromJNI());
+    ```
+    - native-lib中的原生方法:
+    ```
+    public native String stringFromJNI();
+    ```
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+***
+
+* __生成so文件__
+
+
 ## 三、问题及解决办法
 ---等待后续完善---
 
 ## 参考资料
-* <https://www.jianshu.com/p/16f6a3e3fc45>
-* <https://blog.csdn.net/xiaoyu_93/article/details/52870395>
-* <https://blog.csdn.net/chuhongcai/article/details/52558049>
+* [Android NDK开发（一）](https://www.jianshu.com/p/16f6a3e3fc45)
+* [NDK开发 从入门到放弃(一：基本流程入门了解)](https://blog.csdn.net/xiaoyu_93/article/details/52870395)
+* [超级简单的Android Studio jni 实现(无需命令行)](https://blog.csdn.net/chuhongcai/article/details/52558049)
+* [Android NDK开发（一） 使用CMake构建工具进行NDK开发](https://www.jianshu.com/p/81548d9f4ec4)
