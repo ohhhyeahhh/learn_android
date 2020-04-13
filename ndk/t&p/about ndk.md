@@ -154,7 +154,10 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
     }
     ```  
 
-    - 注意：第1行代码的com_example_myapplication_jnitest.h和第三行代码的Java_com_example_myapplication_jnitest_getString根据每个人自己的命名进行相应修改。  
+    - 注意：第1行代码的com_example_myapplication_jnitest.h和  
+           第三行代码的Java_com_example_myapplication_jnitest_getString  
+           根据每个人自己的命名进行相应修改。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
 
 5. 在Android.mk文件中输入如下代码段：  
     ```
@@ -171,9 +174,46 @@ NDK可以为我们生成了C/C++的动态链接库，JNI是java和C/C++沟通的
     APP_ABI := all
     ```
     
+7. 右击jni文件夹external tools ndk_build,完成后得到一个libs文件夹和一个obj文件夹。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+    - 这里将libs文件夹改名为jniLibs，这个文件夹名是默认的访问地址，注意大小写。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
 
-    
+8. 最后JAVA文件夹下的MainActivity类中的测试代码段如下所示：  
+    ```
+    package com.example.myapplication;
 
+    import androidx.appcompat.app.AppCompatActivity;
+
+    import android.os.Bundle;
+    import android.widget.TextView;
+
+    public class MainActivity extends AppCompatActivity {
+
+        // Used to load the 'native-lib' library on application startup.
+        static {
+            System.loadLibrary("MyLibrary");
+        }
+
+        @Override
+
+        protected void onCreate(Bundle savedInstanceState) {
+
+            super.onCreate(savedInstanceState);
+
+            setContentView(R.layout.activity_main);
+
+            TextView tv = (TextView) findViewById(R.id.sample_text);
+
+            tv.setText(new jnitest().getString());
+
+        }
+    }
+    ```
+    - 点击运行后如下图所示正常运行，则环境配置成功。  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/change2.png)  
+
+*** 
 
 ### 3、使用cmake方式安装
 
