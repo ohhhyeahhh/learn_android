@@ -18,11 +18,6 @@ OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库�
 --资料整理：存放整理后资料
 
 
-## 运行环境
-Android Studio 3.6.1
-
-OpenCV for Android SDK 3.4.1
-
 ## 基于 Android 的 OpenCV 开发环境搭建
 
 ### OpenCV SDK 准备
@@ -42,29 +37,7 @@ OpenCV for Android SDK 3.4.1
 3. 直接在 app 目录下build.gradle 文件里dependencies 大括号下添加 compile project(':openCVLibrary') 版本不同可能要将compile换成implementation
 4. 打开刚导入的模块下 build.gradle 文件，把 compileSdkVersion 和 minSdkVersion 和 targetSdkVersion修改成build.gradle(module:app)的SDK版本
 5. 接着在 app/src/main 目录下 创建一个jniLibs 目录，然后把sdk/native/libs 下所有文件拷贝到jniLibs下，编译，运行。
-`
 
-## 知识储备
-
-### Opencv
-**1. cvtColor**
-cvtColor函数是OpenCV里用于图像颜色空间转换，可以实现RGB颜色、HSV颜色、HSI颜色、lab颜色、YUV颜色等转换，也可以彩色和灰度图互转。
-
-**2. 降噪**
-尽量保留图像细节特征的条件下对目标图像的噪声进行抑制和平滑处理，是图像预处理中不可缺少的操作，其处理效果的好坏将直接影响到后续图像处理和分析的有效性和可靠性。
-
-**3. 边缘检测**
-主要步骤：图片灰度化，将彩色图片转为灰度图、高斯模糊去噪、使用Canny算法进行边缘识别、将边缘识别后的图像二值化、提取图像边框，选组合适边框、对图像轮廓点进行多边形拟合、在多边形中选择合适点作为扫描图形的边界点、对结果图像使用透视技术纠正角度
-
-### Opencv-CascadeClassifier
-CascadeClassifier是opencv下objdetect模块中用来做目标检测的级联分类器的一个类；简而言之是滑动窗口机制+级联分类器的方式。
-- 加载人脸识别的级联分类器
-`CascadeClassifier cascadeClassifier;`
-
-### DetectMultiScale
-opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出图片中所有的人脸，并将人脸用vector保存各个人脸的坐标、大小（用矩形表示）。
-### Rectangle
-该函数用于绘制矩形，可以利用对角线两点来绘制矩形或者传入矩形参数来绘制矩形。
 
 ## 参考资料
 - [Android 接入 OpenCV库的三种方式](https://www.cnblogs.com/xiaoxiaoqingyi/p/6676096.html)
@@ -86,15 +59,15 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 
 ## 项目成员
 
-于之希——资料整理
+于之希——资料整理、PPT制作排版
 
-金子钰——资料整理
+金子钰——资料整理、PPT制作
 
-陈俊锦——搭建环境+整合代码
+陈俊锦——人脸检测功能
 
-徐旸——相机预览
+徐旸——摄像机/整合代码
 
-任峻扬——识别功能
+任峻扬——配置Opencv环境
 
 ## 项目记录
 
@@ -109,3 +82,11 @@ opencv2中人脸检测使用的是 detectMultiScale函数。它可以检测出�
 3.23 添加打包项目
 
 3.26 添加技术文档
+
+4.08 修改技术文档
+
+4.09 修改技术文档 
+
+4.10 完成PPT
+
+4.13 修改PPT
