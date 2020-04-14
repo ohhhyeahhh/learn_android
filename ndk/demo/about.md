@@ -150,7 +150,7 @@ PKWARE数据压缩库爆聚（PKWARE Data Compression Library Imploding），官
 ## 参考资料
 * [RAR-百度百科](https://baike.baidu.com/item/rar/2502036?fr=aladdin)  
 * [7z-百度百科](https://baike.baidu.com/item/7Z/3651842?fr=aladdin)  
-* [zip-百度百科]（https://baike.baidu.com/item/Zip/16684862?fr=aladdin）  
+* [zip-百度百科](https://baike.baidu.com/item/Zip/16684862?fr=aladdin)  
 * [zlib库使用简单讲解](https://blog.csdn.net/t146lla128xx0x/article/details/80429149)  
 * [zlib 2.1.8 编译遇到的问题以及解决方法](https://www.cnblogs.com/chevin/p/5676317.html)  
 
