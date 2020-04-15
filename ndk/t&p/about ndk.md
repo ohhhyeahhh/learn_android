@@ -50,12 +50,51 @@ JNI是最终要达到的目的，NDK是Android中实现JNI的手段，即在Andr
 6. 通过Java命令执行 Java程序，最终实现Java调用本地代码  
 
 * __JNI类型与Java类型对应的关系介绍:__  
-1. 基本数据类型
+1. 基本数据类型  
 
 | JNI类型 | Java类型 | 描述 |  
 | ---- | ---- | ---- |  
-| jboolean | jboolean | 无符号的char类型 |  
+| jboolean | boolean | 无符号的char类型 |  
 | jbyte | byte | 带符号的8位整型 |  
+| jchar | char | 无符号的16位整型 |  
+| jshort | short | 带符号的16位整型 |  
+| jlong | long | 带符号的64位整型 |  
+| jint | int | 带符号的32位整型 |  
+| jfloat | float | 32位浮点型 |  
+| jdouble | double | 64位浮点型 |  
+| void | void | 无类型 |  
+
+2. 引用类型（类、对象、数组）  
+
+| JNI类型 | Java类型 | 描述 |  
+| ---- | ---- | ---- |  
+| jobject | Object | 任何JAVA对象 |  
+| jclass | class | Class对象 |  
+| jstring | String | 字符串对象 |  
+| jobjectArray | Object[] | 对象数组 |  
+| jbooleanArray | boolean[] | 布尔型数组 |  
+| jbyteArray | byte[] | 比特型数组 |  
+| jcharArray | char[] | 字符型数组 |  
+| jshortArray | short[] | 短整型数组 |  
+| jintArray | int[] | 整型数组 |  
+| jlongArray | long[] | 长整型数组 |  
+| jfloatArray | float[] | 浮点型数组 |  
+| jdoubleArray | double[] | 双浮点数组 |  
+| jthrowable | Throwable | Throwable |  
+
+3. 数据类型的签名（标识JAVA类型）  
+
+| Java类型 | 签名 |  
+| ---- | ---- |  
+| boolean | Z |  
+| byte | B |  
+| char | C |  
+| short | S |  
+| long | J |  
+| int | I |  
+| float | F |  
+| double | D |  
+| void | V |  
 
 ***
 
@@ -287,7 +326,7 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
   在开始使用cmake安装之前，要确保已经按照之前的教程下载了Cmake构建工具、LLDB调试工具和NDK开发工具集，并创建了支持C/C++的新项目。  
   
 * 创建完成后同样需要按照之前的教程配置NDK。全部配置完毕后，直接点击运行，可以发现Android Studio已经帮我们自动生成了一个可以运行的cpp文件（如下图所示），只需要根据需求修改native-lib.cpp文件以及Android就可以使用了。  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake1.png)  
 
 ***
 
@@ -295,12 +334,12 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
 1. app里的build.gradle配置比对代码可以发现里面面添加了两处externalNativeBuild配置项：  
     - defaultConfig里面的配置项：主要配置了Cmake的命令参数。  
     - defaultConfig外面的配置项：主要定义了CMake的构建脚本CMakeLists.txt的路径。  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava1.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake2.png)  
     
 2. CMake的构建脚本CMakeLists.txt：  
     - CMakeLists.txt是CMake的构建脚本，在其中包含 CMake 构建 C/C++ 库时需要使用的命令。作用相当于ndk-build中的Android.mk。  
     - 更多详细的脚本配置可以参考这个中文版的[CMAKE手册](https://www.zybuluo.com/khan-lau/note/254724)
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava2.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake3.png)  
 
 3. 原生代码native-lib.cpp:  
     - Android提供了一个简单的JNI交互Demo，返回一个字符串给Java层，方法名是通过 Java_包名_类名_方法名 的方式命名的，并通过MainActivity调用。  
@@ -319,7 +358,7 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
     ```
     public native String stringFromJNI();
     ```
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake4.png)  
 
 ***
 
@@ -392,7 +431,7 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
     - 在Cmakelists.txt和native-lib.cpp都准备好后，只需要build->Make project或者rebuild就可以生成。  
     - native-lib.cpp在创建c++支持的project时android studio会自动生成。  
     - So文件会生成在build-->intermediates-->cmake-->debug-->obj下。  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake5.png)  
 
 ***
 
@@ -438,7 +477,7 @@ Android Studio2.2以下版本并没有内部集成ndk，手动配置部分较多
     - 关闭终端并重新打开。  
     - 若无错误提示，则成功配置。  
 
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/extra1.png)  
 
 ***
 
@@ -452,14 +491,14 @@ Android Studio2.2以下版本并没有内部集成ndk，手动配置部分较多
     ```
     ndk.dir=/Users/Carson_Ho/Library/Android/sdk/ndk-bundle
     ```
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/extra2.PNG)  
 
 * __在Gradle的 gradle.properties中添加配置:__  
     - 在文件中添加如下代码段：  
     ```
     android.useDeprecatedNdk=true
     ```
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/extra3.PNG)  
 
 * __在Gradle的build.gradle添加ndk节点:__  
     - 在文件中添加如下代码段：  
@@ -470,7 +509,7 @@ Android Studio2.2以下版本并没有内部集成ndk，手动配置部分较多
             ldLibs "log"
         }
     ```
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/extra4.PNG)  
 
 ***
 
@@ -526,7 +565,7 @@ Android Studio2.2以下版本并没有内部集成ndk，手动配置部分较多
     - 如果本地代码是C++（.cpp或者.cc），要使用extern "C" { }把本地方法括进去。  
     - JNIEXPORT jstring JNICALL中的JNIEXPORT和JNICALL不能省。  
     - 关于方法名Java_scut_carson_1ho_ndk_1demo_MainActivity_getFromJNI：  
-    > + 格式 = Java _包名 _ 类名_ Java需要调用的方法名  
+    > + 格式 = Java _ 包名 _ 类名 _ Java需要调用的方法名  
     > + Java必须大写  
     > + 对于包名，包名里的.要改成_，_要改成_1,如果这里的包名是：scut.carson_ho.ndk_demo，则需要改成scut_carson_1ho_ndk_1demo  
     - 最后，将创建好的test.cpp文件放入到工程文件目录中的src/main/jni文件夹  
@@ -651,7 +690,7 @@ Android Studio2.2以下版本并没有内部集成ndk，手动配置部分较多
 ## 四、问题及解决办法
 
 ### 1、问题：Android.mk must not contain space 以及 Defaulting to minimum supported version android=16  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/question1.png)  
 
 * __原因：__  
 第一个问题是Android.mk文件中含有空格，第二个问题是平台版本不够。  
@@ -667,7 +706,7 @@ Android Studio2.2以下版本并没有内部集成ndk，手动配置部分较多
 ***
 
 ### 2、问题：error：invalid preprocessing directive  #include “jnitest.h”  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/newjava3.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/question2.png)  
 
 * __原因：__  
 无效的预处理。  
