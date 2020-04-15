@@ -326,7 +326,7 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
   在开始使用cmake安装之前，要确保已经按照之前的教程下载了Cmake构建工具、LLDB调试工具和NDK开发工具集，并创建了支持C/C++的新项目。  
   
 * 创建完成后同样需要按照之前的教程配置NDK。全部配置完毕后，直接点击运行，可以发现Android Studio已经帮我们自动生成了一个可以运行的cpp文件（如下图所示），只需要根据需求修改native-lib.cpp文件以及Android就可以使用了。  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake1.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/camke1.png)  
 
 ***
 
@@ -334,7 +334,7 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
 1. app里的build.gradle配置比对代码可以发现里面面添加了两处externalNativeBuild配置项：  
     - defaultConfig里面的配置项：主要配置了Cmake的命令参数。  
     - defaultConfig外面的配置项：主要定义了CMake的构建脚本CMakeLists.txt的路径。  
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake2.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake2-1.png)  
     
 2. CMake的构建脚本CMakeLists.txt：  
     - CMakeLists.txt是CMake的构建脚本，在其中包含 CMake 构建 C/C++ 库时需要使用的命令。作用相当于ndk-build中的Android.mk。  
@@ -358,7 +358,7 @@ LLDB是一个高效的C/C++调试器，是Android Studio 用于调试原生代�
     ```
     public native String stringFromJNI();
     ```
-![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake4.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/cmake4-1.png)  
 
 ***
 
