@@ -190,7 +190,7 @@ PKWARE数据压缩库爆聚（PKWARE Data Compression Library Imploding），官
     
 * __调用so库相关：__  
 1. 如果xxxx.cpp需要引用一些c++头文件，那么就需要在Android.mk中加入之前所述的c++头文件库，否则会无法找到这些头文件。  
-   最好在Application.mk中加入以下代码行：  
+    - 最好在Application.mk中加入以下代码行：  
     ```
     APP_STL := c++_static
     ```
