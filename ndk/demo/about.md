@@ -125,10 +125,55 @@ PKWARE数据压缩库爆聚（PKWARE Data Compression Library Imploding），官
 
 3. 报错：无法定位程序输入点CreateFile2于动态链接库KERNEL32.dll上  
     - 解决办法：
-    ①找到iowin32.c文件，在第一行位置上增加宏判断#if _WIN32_WINNT >= _WIN32_WINNT_WIN8 ，最后一行加上 #endif  
+    ①找到iowin32.c文件，在第一行位置上增加宏判断：  
+    ```
+    #if _WIN32_WINNT >= _WIN32_WINNT_WIN8
+    ```
+    最后一行加上 #endif  
     ②zlibvc-属性-配置属性-C/C++-预处理器定义 加入一行 _WIN32_WINNT=0x0601  
     
-4. 
+4. 问题具体见下图：  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/q1.png)  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/q2.png)  
+    - 原因：  
+    以上两种错误，第一种是提示找不到iostream头文件，第二个是无法识别iostream头文件相关的代码。在本案例中错误二是对错误一进行改正后又出现的错误，这里的原因是本案例中LOCAL_SRC_FILES是mytest.c，并且又在mytest.c中加入了C++头文件而产生的。  
+    - 解决方法：  
+    使用.cpp类型的源文件。  
+    
+5. 问题具体见下图：  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/q3.png)  
+    - 原因：语法错误。  
+    - 解决办法：  
+    在.cpp源文件中使用C语言，C语言对应的jni语言和C++对应的jni语言是有所差异的，在直接套用前应该进行一定的修改。  
+    
+6. 问题具体见下图：  
+![download ndk](https://github.com/Shadowmeoth/learn_android/blob/master/ndk/t%26p/image/q4.png)  
+    - 原因：  
+    上述头文件crypt.h，是生成的静态库libzlib中zip.c源文件所需要的头文件，但是它并没有对应的.c源文件，所以无法像其他还有源文件的头文件一样直接在LOCAL_SRC_FILES中加入对应源文件。  
+    - 解决办法：  
+    将LOCAL_SRC_FILES直接写在mytest.cpp的开头所需的头文件里，并将该文件放在mytest.cpp同级目录下。  
+    
+7. undefined reference to报错：  
+    - 一般编译器报 “undefined reference to”的错误是以下几种情况：  
+    - （1）没有指定对应的库（.o/.a/.so）  
+        > 使用了库中定义的实体，但没有指定库（-lXXX）或者没有指定库路径（-LYYY），会导致该错误。  
+        > 在Android.mk中 用LDFLAGS参数来定义库（-lXXX）和（-LYYY）的。  
+        
+    - （2）连接库参数的顺序不对  
+        > 在默认情况下,对于-l 使用库的要求是越是基础的库越要写在后面,无论是静态还动态。  
+        > -D参数的使用，也会导致“undefined reference to”的错误，如果想在做宏控制的时候，建议把-D参数放到最后。  
+
+    - （3）gcc/ld 版本不匹配   
+        > gcc/ld的版本的兼容性问题,由于gcc2 到 gcc3大版本的兼容性存在问题(其实gcc3.2到3.4也一定程度上存在这样的问题)。  
+        > 当在高版本机器上使用低版本的机器就会导致这样的错误, 这个问题比较常见在32位的环境上, 另外就在32位环境不小心使用了64位的库或者反过来64位环境使用了32位的库。这个问题与Linux下几乎一样。  
+        
+    - （4）C/C++相互依赖和链接  
+        > gcc和g++编译结果的混用需要保证能够extern "C" 两边都可以使用的接口,在我们的64位环境中gcc链接g++的库还需要加上-lstdc++，具体见前文对于混合编译的说明。  
+        > 需要用JNI链接纯C语言的库，即在extern “C”的使用时候，必须要包含头文件。  
+
+    - （5）运行期报错  
+        > 这个问题基本上是由于程序使用了dlopen方式载入.so, 但.so没有把所有需要的库都链接上,具体参加上文中对于静态库和动态库混合使用的说明。  
+        > 关于执行时动态链接的问题，在Android链接的库依赖于现在当前的库，就变成了你链接我，我再链接你，导致死都编不过，最好撇清这种关系。  
 
 ***
 
@@ -143,7 +188,16 @@ PKWARE数据压缩库爆聚（PKWARE Data Compression Library Imploding），官
     ```
     - 以上两句的顺序不能更改，否则app页面中的图片将无法显示，而且该错误并不会产生报错。  
     
-2. 
+* __调用so库相关：__  
+1. 如果xxxx.cpp需要引用一些c++头文件，那么就需要在Android.mk中加入之前所述的c++头文件库，否则会无法找到这些头文件。  
+   最好在Application.mk中加入以下代码行：  
+    ```
+    APP_STL := c++_static
+    ```
+
+2. 如果创建的是xxxx.c，那么即使如上一个问题中加入c++头文件库，也会无法识别c++语言而报错，建议如果要使用c++头文件的话请生成.cpp文件。  
+
+3. .c和.cpp中的jni语言的语法是不同的，编写的时候请注意。不过似乎单纯引入头文件而不写具体的函数功能也能编译通过生成.so。  
 
 ***
 
