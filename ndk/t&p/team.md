@@ -1,4 +1,5 @@
 # Android-NDK t&p/team-团队介绍
+<<<<<<< HEAD
 
 ## 团队分工
 * __组长：__  
