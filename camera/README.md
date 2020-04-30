@@ -4,13 +4,13 @@
 
 ​	本项目主要介绍一些 Camera2 的重要概念和使用方法。
 
-## 团队成员：
+## 团队分工：
 
-- 林英琮 
-- 汪雨薇 
-- 徐国聪 
-- 卢文昊 
-- 冯博
+- 林英琮：闪光灯，变焦，openGL，预览，文档相关 
+- 汪雨薇：camera2拍照，水印网格线，保存内容，小窗预览，文档相关 
+- 徐国聪：openGL，camera2拍照，封装工具类，适配尺寸，文档相关 
+- 卢文昊：UI设计，类设计，文档相关
+- 冯博：类设计
 
 ## 项目结构
 
@@ -27,16 +27,13 @@
 
 ## 食用方法
 
-1. clone至你的本地
-
-```git
-git clone https://github.com/ohhhyeahhh/learn_android.git
-```
+[code](/camera/code/)
 
 ## 参考资料
 
 - <https://www.jianshu.com/p/9a2e66916fcb> 
 - <https://www.android-doc.com/guide/topics/media/camera.html> 
+- …………
 
 ## 项目记录
 
@@ -45,3 +42,10 @@ git clone https://github.com/ohhhyeahhh/learn_android.git
 3.12 git test + 编写项目计划和目录
 
 3.13 具体计划项目内容
+
+3.29 - 4.4 各自分工实现具体功能
+
+4.5 代码整合与调试
+
+4.2 - 4.6 整理项目文档 + 制作演示PPT和视频
+
